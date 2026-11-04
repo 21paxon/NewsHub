@@ -1,0 +1,29 @@
+
+name: NewsHub CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: Check Website Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML File
+        run: test -f index.html
+
+      - name: Check CSS File
+        run: test -f styles.css
+
+      - name: Check JavaScript File
+        run: test -f javascript.js
+
+      - name: Pipeline Completed
+        run: echo "NewsHub CI Pipeline completed successfully!"
